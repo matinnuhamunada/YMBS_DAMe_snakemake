@@ -1,0 +1,12 @@
+name: YMBS
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.9
+  - adapterremoval
+  - sickle-trim
+  - spades
+  - fastqc
+  - pandaseq

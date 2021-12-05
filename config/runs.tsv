@@ -1,0 +1,4 @@
+runs	R1	R2
+pool1	rawdata/TOG-course-pool1-R1.fastq.bz2	rawdata/TOG-course-pool1-R2.fastq.bz2
+pool2	rawdata/TOG-course-pool2-R1.fastq.bz2	rawdata/TOG-course-pool2-R2.fastq.bz2
+pool3	rawdata/TOG-course-pool3-R1.fastq.bz2	rawdata/TOG-course-pool3-R2.fastq.bz2

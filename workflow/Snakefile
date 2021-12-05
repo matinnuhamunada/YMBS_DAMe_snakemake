@@ -1,0 +1,38 @@
+from snakemake.utils import min_version
+
+##### set minimum snakemake version #####
+min_version("6.4.1")
+
+
+##### setup report #####
+configfile: "config/config.yaml"
+
+
+report: "report/workflow.rst"
+
+
+##### setup singularity #####
+
+
+# this container defines the underlying OS for each job when using the workflow
+# with --use-conda --use-singularity
+container: "docker://continuumio/miniconda3"
+
+
+##### load rules #####
+
+
+include: "rules/common.smk"
+include: "rules/qc.smk"
+
+
+##### target rules #####
+
+
+rule all:
+    input:
+        expand("results/{runs}/TOG-course-{runs}-{lane}_fastqc.html", runs=RUNS, lane=["R1", "R2"]),
+        expand("results/{runs}/{runs}.{pair}.truncated.gz", runs=RUNS, pair=["pair1", "pair2"]),
+        expand("results/{runs}/{runs}.trim.{lane}.fastq.gz", runs=RUNS, lane=["R1", "R2"]),
+        expand("results/{runs}/corrected", runs=RUNS),
+        expand("results/{runs}/{runs}.merged.fastq", runs=RUNS),
