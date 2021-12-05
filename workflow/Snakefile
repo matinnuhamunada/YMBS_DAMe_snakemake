@@ -34,5 +34,5 @@ rule all:
         expand("results/{runs}/TOG-course-{runs}-{lane}_fastqc.html", runs=RUNS, lane=["R1", "R2"]),
         expand("results/{runs}/{runs}.{pair}.truncated.gz", runs=RUNS, pair=["pair1", "pair2"]),
         expand("results/{runs}/{runs}.trim.{lane}.fastq.gz", runs=RUNS, lane=["R1", "R2"]),
-        expand("results/{runs}/corrected", runs=RUNS),
+        expand("results/{runs}/corrected/{runs}.trim.{lane}.fastq.00.0_0.cor.fastq.gz", runs=RUNS, lane=["R1", "R2"]),
         expand("results/{runs}/{runs}.merged.fastq", runs=RUNS),

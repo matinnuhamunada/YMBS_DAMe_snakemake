@@ -21,7 +21,7 @@ rule AdapterRemoval:
         "../envs/YMBS.yaml"
     shell:
         """
-        AdapterRemoval --file1 {input.fastq1} --file2 {input.fastq1} --basename {wildcards.runs}/{wildcards.runs} --gzip
+        AdapterRemoval --file1 {input.fastq1} --file2 {input.fastq1} --basename results/{wildcards.runs}/{wildcards.runs} --gzip
         """
 
 rule QualityTrimming:
@@ -44,7 +44,8 @@ rule ErrorCorrection:
         R1 = "results/{runs}/{runs}.trim.R1.fastq.gz",
         R2 = "results/{runs}/{runs}.trim.R2.fastq.gz",
     output:
-        directory("results/{runs}/corrected")
+        R1="results/{runs}/corrected/{runs}.trim.R1.fastq.00.0_0.cor.fastq.gz",
+        R2="results/{runs}/corrected/{runs}.trim.R2.fastq.00.0_0.cor.fastq.gz",
     conda:
         "../envs/YMBS.yaml"
     shell:
